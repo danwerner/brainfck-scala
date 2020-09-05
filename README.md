@@ -6,6 +6,8 @@ Parser and interpreter for the language **Brainfuck**, written using
 
 For a syntax guide, please see the [Wikipedia article][wiki].
 
+![Scala CI](https://github.com/danwerner/brainfck-scala/workflows/Scala%20CI/badge.svg)
+
 ## Example programs
 
 ### Adding two values
