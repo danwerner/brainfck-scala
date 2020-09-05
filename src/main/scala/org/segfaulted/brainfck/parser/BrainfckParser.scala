@@ -50,7 +50,7 @@ class BrainfckParser extends RegexParsers {
    */
   def loop: Parser[Loop] = ("[" ~> rep(expr) <~ "]") ^^ Loop
 
-  def comment: Parser[Comment] = ("[^" + validChars + "]+").r ^^ Comment
+  def comment: Parser[Comment] = ("[^" + validChars + "]+").r ^^ { s => Comment(s.trim) }
 
   def expr: Parser[Instruction] = incDataPointer | decDataPointer | incByte | decByte | outputByte | inputByte | loop | comment
 
