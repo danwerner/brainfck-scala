@@ -7,5 +7,3 @@ end_of_line = lf
 [*.md]
 indent_size = 4
 indent_style = space
-max_line_length = 80
-ij_wrap_on_typing = true
