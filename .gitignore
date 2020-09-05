@@ -1,0 +1,13 @@
+### IntelliJ project files
+.idea
+*.iml
+
+### Java
+*.class
+*.log
+
+target
+
+# virtual machine crash logs
+hs_err_pid*
+
