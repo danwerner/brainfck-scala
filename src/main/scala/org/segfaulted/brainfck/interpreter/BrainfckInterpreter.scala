@@ -19,8 +19,8 @@ class BrainfckInterpreter {
   }
 
   protected def execute(instruction: Instruction): Unit = instruction match {
-    case IncDataPointer => dataPointer += 1
-    case DecDataPointer => dataPointer -= 1
+    case IncPointer => dataPointer += 1
+    case DecPointer => dataPointer -= 1
     // TODO: Try +=
     case IncByte => memory(dataPointer) = memory(dataPointer) + 1
     case DecByte => memory(dataPointer) = memory(dataPointer) - 1

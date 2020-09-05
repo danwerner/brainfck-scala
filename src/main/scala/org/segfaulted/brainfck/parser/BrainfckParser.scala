@@ -14,12 +14,12 @@ class BrainfckParser extends RegexParsers {
   /**
    * `>` increment the data pointer (to point to the next cell to the right).
    */
-  def incDataPointer: Parser[IncDataPointer.type] = ">" ^^^ IncDataPointer
+  def incDataPointer: Parser[IncPointer.type] = ">" ^^^ IncPointer
 
   /**
    * `<` decrement the data pointer (to point to the next cell to the left).
    */
-  def decDataPointer: Parser[DecDataPointer.type] = "<" ^^^ DecDataPointer
+  def decDataPointer: Parser[DecPointer.type] = "<" ^^^ DecPointer
 
   /**
    * `+` increment (increase by one) the byte at the data pointer.
