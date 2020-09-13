@@ -5,6 +5,7 @@ import org.specs2.mutable.Specification
 
 class BrainfckParserTest extends Specification {
   "BrainfckParser" should {
+
     "parse a simple program" in {
       val ast = Seq(
         Loop(Seq(

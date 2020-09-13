@@ -6,25 +6,27 @@ import org.segfaulted.brainfck.parser.BrainfckParser
 class BrainfckInterpreter {
   import BrainfckInterpreter._
 
-  protected var dataPointer: Int = 0
-  protected val memory: Array[Int] = Array.fill(MemorySize)(0)
+  protected[interpreter] var dataPointer: Int = 0
+  protected[interpreter] val memory: Array[Int] = Array.fill(MemorySize)(0)
 
   def run(input: String): Unit = {
     val ast = BrainfckParser.parseSource(input)
-    execute(ast)
+    run(ast)
   }
 
-  protected def execute(instructions: Seq[Instruction]): Unit = {
+  def run(ast: Seq[Instruction]): Unit = execute(ast)
+
+  protected[interpreter] def execute(instructions: Seq[Instruction]): Unit = {
     instructions.foreach(execute)
   }
 
-  protected def execute(instruction: Instruction): Unit = instruction match {
+  protected[interpreter] def execute(instruction: Instruction): Unit = instruction match {
     case IncPointer => dataPointer += 1
     case DecPointer => dataPointer -= 1
     // TODO: Try +=
     case IncByte => memory(dataPointer) = memory(dataPointer) + 1
     case DecByte => memory(dataPointer) = memory(dataPointer) - 1
-    case InputByte => memory(dataPointer) = System.in.read()
+    case InputByte => memory(dataPointer) = Console.in.read()
     case OutputByte => print(memory(dataPointer).toChar)
     case Comment(text: String) => ()
     case Loop(body: Seq[Instruction]) => body.foreach(execute)
