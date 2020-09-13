@@ -29,7 +29,10 @@ class BrainfckInterpreter {
     case InputByte => memory(dataPointer) = Console.in.read()
     case OutputByte => print(memory(dataPointer).toChar)
     case Comment(text: String) => ()
-    case Loop(body: Seq[Instruction]) => body.foreach(execute)
+    case Loop(body: Seq[Instruction]) =>
+      while (memory(dataPointer) != 0) {
+        body.foreach(execute)
+      }
   }
 }
 
